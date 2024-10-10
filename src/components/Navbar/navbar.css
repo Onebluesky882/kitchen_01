@@ -1,0 +1,28 @@
+.navbar {
+  display: flex;
+  background-color: grey;
+}
+.container {
+  display: flex;
+}
+
+.table {
+  display: flex;
+
+  padding: 20px;
+}
+
+.table-shape {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  border-radius: 2000px;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.text-status {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
