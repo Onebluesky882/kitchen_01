@@ -1,0 +1,25 @@
+.sidebar-container {
+  display: flex;
+  border: 1px solid rgb(67, 23, 177);
+  position: fixed;
+  left: 0;
+  border-radius: 0 10px 10px 0;
+}
+.sidebar-section {
+  padding: 10px;
+  justify-content: center;
+  position: relative;
+
+  border-radius: 10px;
+}
+.sidebar-section ul {
+  padding: 10px;
+}
+
+.sidebar-section li {
+  list-style: none;
+  color: blueviolet;
+}
+.sidebar-section p {
+  text-align: center;
+}

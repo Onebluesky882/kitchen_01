@@ -1,0 +1,29 @@
+.footer-container {
+  display: flex;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  position: fixed;
+  justify-content: center;
+}
+
+.footer-section {
+  display: flex;
+  position: absolute;
+  padding: 20px;
+}
+
+.footer-column {
+  padding: 0px;
+  display: flex;
+
+  margin-left: 10px;
+  border-radius: 20px 20px 0 0;
+  background-color: rgb(216, 255, 229);
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.footer-column p {
+  color: rgb(172, 117, 16) !important;
+}

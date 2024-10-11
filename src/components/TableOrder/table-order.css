@@ -1,0 +1,11 @@
+.table-order-container {
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
+}
+.table-order-section {
+  border: 1px solid blue;
+}
+.table-order-section {
+  display: flex;
+}

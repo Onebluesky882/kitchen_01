@@ -1,0 +1,20 @@
+.menubar {
+  display: flex;
+}
+.menubar-right {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: start;
+}
+.menubar-left {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: start;
+}
+
+.menu-list-style {
+  display: flex;
+  list-style: none;
+}

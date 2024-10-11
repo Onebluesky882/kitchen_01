@@ -1,20 +1,16 @@
-.navbar {
+.nav-table-widget-container {
   display: flex;
-  background-color: grey;
-}
-.container {
-  display: flex;
+  padding: 0px;
+  margin-left: 250px;
 }
 
-.table {
+.nav-table-order {
   display: flex;
-
-  padding: 20px;
 }
 
 .table-shape {
   display: flex;
-  padding: 20px;
+  padding: 10px;
   align-items: center;
   border-radius: 2000px;
   flex-direction: column;

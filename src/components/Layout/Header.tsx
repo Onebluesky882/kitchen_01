@@ -1,20 +1,27 @@
-import Navber from "../Navbar";
-import "./Header.css"; // Import the CSS file where you define the styles
-
+import "./styles/Header.css"; // Import the CSS file where you define the styles
+import logo from "@/assets/catjads.png";
+import { MenuBarLeft, MenuBarRight } from "./menuBar";
+import NavTableWidget from "../NavTableWidget";
 export const Header = () => {
   return (
     <div
       style={{
         display: "flex",
-        marginLeft: "110px",
-        marginRight: "110px",
+        marginLeft: "120px",
+        marginRight: "120px",
         border: "1px solid red ",
-        padding: "40px",
-        justifyContent: "center",
+        flexDirection: "column",
+        borderRadius: "10px",
+        marginTop: "10px",
       }}
     >
+      <div className="container">
+        <MenuBarRight />
+        <img src={logo} alt="logo" width={100} />
+        <MenuBarLeft />
+      </div>
       <header className="header">
-        <Navber />
+        <NavTableWidget />
       </header>
     </div>
   );
