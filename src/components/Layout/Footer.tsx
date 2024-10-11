@@ -1,5 +1,4 @@
 import "./styles/Footer.css";
-import Homepage from "../../pages/Homepage";
 import { useNavigate } from "react-router-dom";
 export const Footer = () => {
   const navigate = useNavigate();

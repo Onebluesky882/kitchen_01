@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import supabase from "../utils/supabase";
-import TableOrder, { TableContainer } from "../components/TableOrder";
+import { TableContainer } from "../components/TableOrder";
 import "./style/homepage.css";
 
 const Homepage = () => {
-  const [orders, setOrders] = useState<any[]>([]);
-
   useEffect(() => {
     callTable();
   });
