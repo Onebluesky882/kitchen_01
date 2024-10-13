@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -33,10 +33,6 @@ h1 {
   line-height: 1.1;
 }
 
-h2 {
-}
-h3 {
-}
 p {
   color: #1a1a1a;
 }

@@ -3,7 +3,7 @@ import Homepage from "./pages/Homepage";
 import Layout from "./components/Layout";
 import TableNo from "./pages/TableNo";
 import NavTableWidget from "./components/NavTableWidget";
-import ThemeProvider, { useTheme } from "./hook/useTheme";
+import ThemeProvider from "./hook/useTheme";
 import GlobalProvider from "./hook/GlobalContext";
 
 function App() {
