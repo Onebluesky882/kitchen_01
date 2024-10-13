@@ -5,7 +5,6 @@ import TableNo from "./pages/TableNo";
 import NavTableWidget from "./components/NavTableWidget";
 import ThemeProvider, { useTheme } from "./hook/useTheme";
 import GlobalProvider from "./hook/GlobalContext";
-import { useEffect } from "react";
 
 function App() {
   return (
