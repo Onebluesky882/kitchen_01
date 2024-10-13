@@ -1,7 +1,7 @@
 /* Header styles */
 .header {
   display: flex;
-  border: 1px solid blueviolet;
+
   top: 0;
   padding: 10px;
   z-index: 1000;

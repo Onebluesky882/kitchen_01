@@ -1,13 +1,14 @@
 import "./styles/Footer.css";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export const Footer = () => {
-  const navigate = useNavigate();
   return (
     <div className="footer-container">
       <div className="footer-section">
-        <div onClick={() => navigate("/")} className="footer-column">
-          <p>homepage</p>
-        </div>
+        <Link to={"/"}>
+          <div className="footer-column">
+            <p>homepage</p>
+          </div>
+        </Link>
         <div className="footer-column">
           <p>menu</p>
         </div>

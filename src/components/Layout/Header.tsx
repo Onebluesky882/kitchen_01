@@ -9,7 +9,7 @@ export const Header = () => {
         display: "flex",
         marginLeft: "120px",
         marginRight: "120px",
-        border: "1px solid red ",
+
         flexDirection: "column",
         borderRadius: "10px",
         marginTop: "10px",

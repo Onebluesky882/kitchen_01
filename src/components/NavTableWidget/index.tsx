@@ -1,31 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import "./navTableWidget.css";
+import { useContext } from "react";
+import { GlobalContext } from "../../hook/GlobalContext";
+import { tables } from "../../data/tables";
 type NavbarProps = {
   tableNo: string;
   status: string;
   seat?: number;
 };
-const data = [
-  {
-    tableNo: "A1",
-    status: "available",
-  },
-  {
-    tableNo: "A2",
-    status: "unavailable",
-  },
-  {
-    tableNo: "B1",
-    status: "AVAILABLE",
-  },
-];
 
 const NavTableWidget = () => {
-  // todo first in first out Fifo order soon from supabase
-
   return (
     <Container>
-      {data.map((table, index) => (
+      {tables.map((table, index) => (
         <NavTableOrder
           key={index}
           tableNo={table.tableNo}
@@ -42,12 +29,17 @@ const Container = ({ children }: React.PropsWithChildren) => {
 
 export const NavTableOrder = ({ tableNo, status }: NavbarProps) => {
   const navigate = useNavigate();
-  const hadleOnClick = () => {
+  const { tableNo: no, selectTableNo } =
+    useContext(GlobalContext).tableProvider;
+  console.log("navtable", no);
+
+  const hadleSubmit = () => {
+    selectTableNo(tableNo);
     navigate(`/${tableNo}`);
   };
   return (
     <div className="nav-table-order ">
-      <div onClick={hadleOnClick} style={StatusTable(status)}>
+      <div onClick={hadleSubmit} style={StatusTable(status)}>
         <h3 className="text-status">{tableNo}</h3>
       </div>
     </div>
