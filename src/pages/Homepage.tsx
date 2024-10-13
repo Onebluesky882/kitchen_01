@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import supabase from "../utils/supabase";
 import { TableContainer } from "../components/TableOrder";
 import "./style/homepage.css";
