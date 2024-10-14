@@ -3,10 +3,12 @@ import { Table } from "../types/table";
 import supabase from "../utils/supabase";
 import { transformKeysToCamelCase } from "../utils/string";
 
-const defaultTable: Table = {
-  status: "AVAILABLE",
-  tableNo: "-",
-};
+const defaultTable: Table[] = [
+  {
+    status: "AVAILABLE",
+    tableNo: "-",
+  },
+];
 const useTable = () => {
   const [tableNo, setTableNo] = useState<Table[]>([]);
 
