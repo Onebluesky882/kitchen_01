@@ -28,7 +28,7 @@ const useTable = () => {
         transformKeysToCamelCase(item)
       );
       console.log("callTable : ", tables);
-      setTableNo(tables);
+      setTableNo([...tableNo, ...tables]);
     }
   };
 
