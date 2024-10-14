@@ -43,7 +43,7 @@ export const NavTableWidgetComponent = ({ tableNo, status }: NavbarProps) => {
 };
 
 const StatusTable = (status: string): React.CSSProperties => {
-  const bgStatus = status === "UNAVAILABLE";
+  const bgStatus = status === "AVAILABLE";
   return {
     padding: "10px 30px 10px 30px",
     margin: "0 20px 0 20px",

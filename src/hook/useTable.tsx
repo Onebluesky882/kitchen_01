@@ -19,7 +19,7 @@ const useTable = () => {
     const { data } = await supabase
       .from("tables")
       .select()
-      .eq("status", "UNAVAILABLE")
+      .eq("status", "AVAILABLE")
       .order("created_at", { ascending: true });
     if (data) {
       const tables: Table[] = data.map((item) =>
