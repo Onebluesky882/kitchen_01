@@ -1,8 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./navTableWidget.css";
 import { useContext } from "react";
 import { GlobalContext } from "../../hook/GlobalContext";
-import { tables } from "../../data/tables";
 type NavbarProps = {
   tableNo: string;
   status: string;
@@ -10,10 +9,11 @@ type NavbarProps = {
 };
 
 const NavTableWidget = () => {
+  const { tableNo: no } = useContext(GlobalContext).tableProvider;
   return (
     <Container>
-      {tables.map((table, index) => (
-        <NavTableOrder
+      {no.map((table, index) => (
+        <NavTableWidgetComponent
           key={index}
           tableNo={table.tableNo}
           status={table.status}
@@ -27,31 +27,27 @@ const Container = ({ children }: React.PropsWithChildren) => {
   return <div className="nav-table-widget-container ">{children}</div>;
 };
 
-export const NavTableOrder = ({ tableNo, status }: NavbarProps) => {
-  const navigate = useNavigate();
-  const { tableNo: no, selectTableNo } =
-    useContext(GlobalContext).tableProvider;
-  console.log("navtable", no);
-
-  const hadleSubmit = () => {
-    selectTableNo(tableNo);
-    navigate(`/${tableNo}`);
-  };
+export const NavTableWidgetComponent = ({ tableNo, status }: NavbarProps) => {
   return (
     <div className="nav-table-order ">
-      <div onClick={hadleSubmit} style={StatusTable(status)}>
-        <h3 className="text-status">{tableNo}</h3>
-      </div>
+      <Link
+        style={{ textDecoration: "none", color: "inherit" }}
+        to={`/${tableNo}`}
+      >
+        <div style={StatusTable(status)}>
+          <h3>{tableNo}</h3>
+        </div>
+      </Link>
     </div>
   );
 };
 
 const StatusTable = (status: string): React.CSSProperties => {
-  const bgStatus = status === "AVAILABLE";
+  const bgStatus = status === "UNAVAILABLE";
   return {
     padding: "10px 30px 10px 30px",
     margin: "0 20px 0 20px",
-    backgroundColor: bgStatus ? "#87C594" : "gray",
+    backgroundColor: bgStatus ? "#DDC291" : "gray",
     borderRadius: "1000px",
     display: "flex",
     flexDirection: "column",

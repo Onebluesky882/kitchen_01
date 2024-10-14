@@ -30,7 +30,7 @@ const Homepage = () => {
         {" "}
         kitchen Program{" "}
       </h1>
-
+      <p> เ สวัสดี</p>
       <div>
         <TableContainer></TableContainer>
       </div>

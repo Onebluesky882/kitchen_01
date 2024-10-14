@@ -5,7 +5,7 @@ import TableNo from "./pages/TableNo";
 import NavTableWidget from "./components/NavTableWidget";
 import ThemeProvider from "./hook/useTheme";
 import GlobalProvider from "./hook/GlobalContext";
-
+import "./App.css";
 function App() {
   return (
     <GlobalProvider>

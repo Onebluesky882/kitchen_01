@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
+  font-family: "Noto Serif Thai", serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -10,10 +10,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  user-select: none;
+
+  --primary-color: #3498db; /* A blue shade */
+  --secondary-color: #2ecc71; /* A green shade */
+  --background-color: #f0f0f0; /* Light grey */
+  --text-color: #333333; /* Dark grey for text */
 }
 
-a {
+p a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -31,10 +35,6 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-p {
-  color: #1a1a1a;
 }
 
 li {
