@@ -7,6 +7,7 @@ const defaultTable: Table[] = [
   {
     status: "AVAILABLE",
     tableNo: "-",
+    id: "",
   },
 ];
 const useTable = () => {
@@ -14,6 +15,29 @@ const useTable = () => {
 
   useEffect(() => {
     CallTable();
+
+    const channels = supabase
+      .channel("custom-insert-channel")
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "tables",
+        },
+        (payload: any) => {
+          const newTable = transformKeysToCamelCase(payload.new);
+          if (newTable.status === "AVAILABLE") {
+            setTableNo((prev) => [...prev, newTable]);
+          }
+          tableNo;
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channels);
+    };
   }, []);
 
   // call table with array

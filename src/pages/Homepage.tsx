@@ -2,11 +2,8 @@ import { useEffect } from "react";
 import supabase from "../utils/supabase";
 import { TableContainer } from "../components/TableOrder";
 import "./style/homepage.css";
-import { useTheme } from "../hook/useTheme";
 
 const Homepage = () => {
-  const colors = useTheme();
-
   useEffect(() => {
     callTable();
   });
@@ -26,10 +23,7 @@ const Homepage = () => {
   return (
     <div className="container-01">
       {/* // todo sort Fifo from supabase set order table sort by time{" "} */}
-      <h1 style={{ textAlign: "center", color: colors?.green }}>
-        {" "}
-        kitchen Program{" "}
-      </h1>
+      <h1 style={{ textAlign: "center", color: "green" }}> kitchen Program </h1>
       <p> เ สวัสดี</p>
       <div>
         <TableContainer></TableContainer>
