@@ -1,3 +1,5 @@
+import { colors } from "../../data/Theme";
+import "./orderTableCard.css";
 type OrderTableCardProps = {
   status: string;
   name: string;
@@ -5,21 +7,30 @@ type OrderTableCardProps = {
   image: string;
 };
 
-const OrderTableCard = ({
-  status,
+export const OrderTableContainer = ({ children }: React.PropsWithChildren) => {
+  return <div className="order-table-container">{children}</div>;
+};
+
+export const OrderTableCard = ({
   amount,
   image,
   name,
+  status,
 }: OrderTableCardProps) => {
   return (
-    <div style={{ backgroundColor: "blue", display: "flex" }}>
-      <div>
-        <img src={image} alt={image} width={40} />
-      </div>
-      <div>
-        <p>{name}</p>
-        <p>{amount}</p>
-        <p>{status}</p>
+    <div className="order-table-section">
+      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <div style={{}}>
+          <img src={image} width={50} />
+        </div>
+        <div>
+          <p>
+            {name} <span>{amount} </span>{" "}
+          </p>
+        </div>
+        <div>
+          <p>{status} </p>
+        </div>
       </div>
     </div>
   );

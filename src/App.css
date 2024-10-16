@@ -5,4 +5,10 @@ p {
 body {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  background-color: var(--cream-color);
+  --blue-color: #789dbc; /* A blue shade */
+  --pink-color: #ffe3e3; /* A green shade */
+  --cream-color: #fcf1d4;
+  --green-color: #bff6c3;
+  --text-color: #333333;
 }

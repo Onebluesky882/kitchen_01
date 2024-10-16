@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom";
 import TableNoCard from "../components/TableNoCard";
 import { useContext } from "react";
 import { GlobalContext } from "../hook/GlobalContext";
-import OrderTableCard from "../components/OrderTableCard";
 import mockOrders from "../data/mockFood";
+import OrderTableCard, {
+  OrderTableContainer,
+} from "../components/OrderTableCard";
 
 const TableNo = () => {
   const { tableNo } = useParams();
@@ -20,7 +22,7 @@ const TableNo = () => {
       <h1 style={{ textAlign: "center", color: "blueviolet" }}>
         <TableNoCard tableNo={table.tableNo} />
       </h1>
-      <div style={{ backgroundColor: "yellowgreen" }}>
+      <OrderTableContainer>
         {mockOrders.map((menu) => (
           <OrderTableCard
             status={menu.status}
@@ -29,7 +31,7 @@ const TableNo = () => {
             image={menu.image}
           />
         ))}
-      </div>
+      </OrderTableContainer>
     </div>
   );
 };

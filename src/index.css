@@ -11,15 +11,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --primary-color: #3498db; /* A blue shade */
-  --secondary-color: #2ecc71; /* A green shade */
-  --background-color: #f0f0f0; /* Light grey */
-  --text-color: #333333; /* Dark grey for text */
+  /* Dark grey for text */
 }
 
 p a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--primary-color);
   text-decoration: inherit;
 }
 a:hover {
