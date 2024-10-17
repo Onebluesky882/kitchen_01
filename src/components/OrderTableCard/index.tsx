@@ -1,8 +1,10 @@
-import { colors } from "../../data/Theme";
+import { useContext } from "react";
 import "./orderTableCard.css";
+import { GlobalContext } from "../../hook/GlobalContext";
 type OrderTableCardProps = {
+  tableNo: string;
+  menuId: string;
   status: string;
-  name: string;
   amount: number;
   image: string;
 };
@@ -14,9 +16,11 @@ export const OrderTableContainer = ({ children }: React.PropsWithChildren) => {
 export const OrderTableCard = ({
   amount,
   image,
-  name,
+
   status,
 }: OrderTableCardProps) => {
+  const { order } = useContext(GlobalContext).orderProvider;
+
   return (
     <div className="order-table-section">
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
@@ -25,7 +29,7 @@ export const OrderTableCard = ({
         </div>
         <div>
           <p>
-            {name} <span>{amount} </span>{" "}
+            <span>{amount} </span>{" "}
           </p>
         </div>
         <div>

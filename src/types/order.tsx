@@ -1,10 +1,14 @@
-export type Orders = {
-  id: string;
-  createAt: string;
+export type Order = {
   tableNo: string;
-  name: string;
+  menuId: string;
   status: string;
   doneAt?: string;
-  amount?: number;
+  amount: number;
+};
+export type MenuItem = {
+  id: string;
+  name: string;
+  price: number;
   image: string;
+  category: string;
 };

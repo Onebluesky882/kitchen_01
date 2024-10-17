@@ -7,7 +7,6 @@ const defaultTable: Table[] = [
   {
     status: "AVAILABLE",
     tableNo: "-",
-    id: "",
   },
 ];
 const useTable = () => {
@@ -28,7 +27,7 @@ const useTable = () => {
         (payload: any) => {
           const newTable = transformKeysToCamelCase(payload.new);
           if (newTable.status === "AVAILABLE") {
-            setTableNo((prev) => [...prev, newTable]);
+            setTableNo([...tableNo, newTable]);
           }
           tableNo;
         }
