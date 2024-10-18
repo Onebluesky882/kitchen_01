@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Layout from "./components/Layout";
-import TableNo from "./types/TableNo";
+import TableNo from "./pages/TableNo";
 import NavTableWidget from "./components/NavTableWidget";
 import GlobalProvider from "./hook/GlobalContext";
 import "./App.css";

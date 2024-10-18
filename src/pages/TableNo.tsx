@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 import TableNoCard from "../components/TableNoCard";
 import { useContext } from "react";
-import GlobalProvider, { GlobalContext } from "../hook/GlobalContext";
-import mockOrders from "../data/mockFood";
+import { GlobalContext } from "../hook/GlobalContext";
 import OrderTableCard, {
   OrderTableContainer,
 } from "../components/OrderTableCard";
@@ -10,7 +9,7 @@ import OrderTableCard, {
 const TableNo = () => {
   const { tableNo } = useParams();
   const { tableNo: no } = useContext(GlobalContext).tableProvider;
-  const { order, callOrder } = useContext(GlobalContext).orderProvider;
+  const { order } = useContext(GlobalContext).orderProvider;
 
   let table = no.find((t) => t.tableNo === tableNo);
 
@@ -24,11 +23,12 @@ const TableNo = () => {
         <TableNoCard tableNo={table.tableNo} />
       </h1>
       <OrderTableContainer>
-        {mockOrders.map((menu) => (
+        {order.map((menu) => (
           <OrderTableCard
-            status={menu.status}
+            tableNo={menu.tableNo}
+            amount={menu.amount}
             name={menu.name}
-            amount={menu.amount ?? 0}
+            price={menu.price}
             image={menu.image}
           />
         ))}

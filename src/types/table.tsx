@@ -3,3 +3,5 @@ export type Table = {
   status: string;
   seat?: number;
 };
+
+// call table from order

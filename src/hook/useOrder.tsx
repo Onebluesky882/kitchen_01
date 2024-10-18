@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import supabase from "../utils/supabase";
 import { transformKeysToCamelCase } from "../utils/string";
-import { Order } from "../types/order";
+import { MenuItem, Order, OrderTable } from "../types/order";
 import { Table } from "../types/table";
+import { menu } from "../data/Menu";
 
 const defaultTable: Table = {
   status: "UNAVAILABLE",
@@ -10,40 +11,39 @@ const defaultTable: Table = {
 };
 
 const useOrder = () => {
-  const [order, setOrder] = useState<Order[]>([]);
+  const [order, setOrder] = useState<OrderTable[]>([]);
   const [table, setTable] = useState<Table>(defaultTable);
   useEffect(() => {
-    getTableOrder(defaultTable.tableNo);
-    // getOrder();
-  }, []);
-  // call table
-  const getTableOrder = async (tableNo: string) => {
-    const { data } = await supabase
-      .from("orders")
-      .select()
-      .eq("table_no", tableNo);
-    if (data && data.length > 0) {
-      const no = transformKeysToCamelCase(data[0]);
-      setTable(no);
-    }
+    getOrder();
+  }, [table.tableNo]);
+
+  const getTableNo = (tableNo: string) => {
+    setTable((prev) => ({ ...prev, tableNo }));
   };
 
   // call order   find match talbe and  fillter status
-  const getOrder = async (tableNo: string) => {
-    const { data } = await supabase
-      .from("orders")
-      .select()
-      .eq("table_no", tableNo);
+  const getOrder = async () => {
+    const { data } = await supabase.from("orders").select();
+
     if (data) {
-      const orders: Order[] = data.map((item) =>
-        transformKeysToCamelCase(item)
-      );
-      console.log("callOrder", orders);
-      setOrder([...order, ...orders]);
+      const dataItem = data.map((item) => transformKeysToCamelCase(item));
+
+      const orderTable: OrderTable[] = dataItem.map((order) => {
+        const newMenu = menu.find((item) => item.id === order.menuId);
+
+        return {
+          ...order,
+          name: newMenu?.name ?? "unknown",
+          price: newMenu?.price ?? 0,
+          image: newMenu?.image ?? "no image",
+          category: newMenu?.category ?? "general",
+        };
+      });
+      console.log(table);
+      setOrder(orderTable);
     }
   };
-
-  return { order, setOrder, getOrder, getTableOrder, table };
+  return { order, setOrder, getOrder };
 };
 
 export const defaultOrderProvider = {

@@ -13,7 +13,7 @@ const useTable = () => {
   const [tableNo, setTableNo] = useState<Table[]>([]);
 
   useEffect(() => {
-    CallTable();
+    getTable();
 
     const channels = supabase
       .channel("custom-insert-channel")
@@ -40,7 +40,7 @@ const useTable = () => {
   }, []);
 
   // call table with array
-  const CallTable = async () => {
+  const getTable = async () => {
     const { data } = await supabase
       .from("tables")
       .select()
@@ -50,15 +50,15 @@ const useTable = () => {
       const tables: Table[] = data.map((item) =>
         transformKeysToCamelCase(item)
       );
-      console.log("callTable : ", tables);
+
       setTableNo([...tableNo, ...tables]);
     }
   };
 
-  return { CallTable, tableNo };
+  return { getTable, tableNo };
 };
 export const defaultTableProvider = {
-  CallTable: () => Promise.resolve(),
+  getTable: () => Promise.resolve(),
   tableNo: defaultTable,
 };
 export default useTable;
