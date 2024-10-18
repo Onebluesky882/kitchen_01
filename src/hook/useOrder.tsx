@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import supabase from "../utils/supabase";
 import { transformKeysToCamelCase } from "../utils/string";
-import { MenuItem, Order, OrderTable } from "../types/order";
+import { Order, OrderTable } from "../types/order";
 import { Table } from "../types/table";
 import { menu } from "../data/Menu";
 
@@ -17,11 +17,6 @@ const useOrder = () => {
     getOrder();
   }, [table.tableNo]);
 
-  const getTableNo = (tableNo: string) => {
-    setTable((prev) => ({ ...prev, tableNo }));
-  };
-
-  // call order   find match talbe and  fillter status
   const getOrder = async () => {
     const { data } = await supabase.from("orders").select();
 
