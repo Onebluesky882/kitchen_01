@@ -5,6 +5,7 @@ import TableNo from "./pages/TableNo";
 import NavTableWidget from "./components/NavTableWidget";
 import GlobalProvider from "./hook/GlobalContext";
 import "./App.css";
+import AddMenuPage from "./pages/AddMenuPage";
 function App() {
   return (
     <GlobalProvider>
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/" element={<NavTableWidget />} />
             <Route path="/:tableNo" element={<TableNo />} />
+            <Route path="/add-menu" element={<AddMenuPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -23,7 +23,7 @@ const useOrder = () => {
     if (data) {
       const dataItem = data.map((item) => transformKeysToCamelCase(item));
 
-      const orderTable: OrderTable[] = dataItem.map((order) => {
+      const orderTable: OrderTable[] = dataItem.map((order: OrderTable) => {
         const newMenu = menu.find((item) => item.id === order.menuId);
 
         return {
@@ -35,17 +35,15 @@ const useOrder = () => {
         };
       });
       console.log(table);
-      setOrder(orderTable);
+      setOrder([...order, ...orderTable]);
     }
   };
   return { order, setOrder, getOrder };
 };
 
 export const defaultOrderProvider = {
-  order: {} as Order[],
-  table: defaultTable,
+  order: {} as OrderTable[],
   setOrder: () => null,
   getOrder: () => Promise.resolve(),
-  getTableOrder: () => Promise.resolve(),
 };
 export default useOrder;

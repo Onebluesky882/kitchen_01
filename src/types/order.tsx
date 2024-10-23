@@ -1,4 +1,4 @@
-// menu data
+// from menu data
 export type MenuItem = {
   id: string;
   name: string;
@@ -6,7 +6,18 @@ export type MenuItem = {
   image: string;
   category: string;
 };
-// local type
+
+export type MenuItemSupabase = {
+  id: string;
+  createdAt: string;
+  menuId: string;
+  price: number;
+  image: string;
+  category: string;
+  updatedAt: string;
+};
+
+// local + supabase
 export type OrderTable = {
   id: string;
   createdAt: string;
@@ -15,13 +26,14 @@ export type OrderTable = {
   status: string;
   doneAt?: string;
   amount: number;
+
   name: string;
   price: number;
   image: string;
   category: string;
 };
 
-//from supabase type
+//from supabase
 export type Order = {
   id: string;
   createdAt: string;
