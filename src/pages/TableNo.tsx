@@ -7,29 +7,30 @@ import OrderTableCard, {
 } from "../components/OrderTableCard";
 
 const TableNo = () => {
-  const { tableNo } = useParams();
-  const { tableNo: no } = useContext(GlobalContext).tableProvider;
-  const { order } = useContext(GlobalContext).orderProvider;
+  const { tableNo = "" } = useParams<{ tableNo?: string }>();
 
-  let table = no.find((t) => t.tableNo === tableNo);
+  const { order, table } = useContext(GlobalContext).orderProvider;
 
-  if (!table) {
-    return <p>Table not found</p>;
-  }
+  const selectedTable = table.find((no) => no.tableNo === tableNo);
 
+  const orderTable = order.filter(
+    (item) => item.tableNo === selectedTable?.tableNo
+  );
+  console.log("orderTable", orderTable);
   return (
     <div>
       <h1 style={{ textAlign: "center", color: "blueviolet" }}>
-        <TableNoCard tableNo={table.tableNo} />
+        <TableNoCard tableNo={tableNo} />
       </h1>
       <OrderTableContainer>
-        {order.map((menu) => (
+        {orderTable.map((menu) => (
           <OrderTableCard
             tableNo={menu.tableNo}
             amount={menu.amount}
             name={menu.name}
             price={menu.price}
             image={menu.image}
+            key={menu.id}
           />
         ))}
       </OrderTableContainer>

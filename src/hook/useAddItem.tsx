@@ -18,6 +18,10 @@ const useMenu = () => {
     const item = getMenuItem(id);
     setMenus((prev) => [...prev, item]);
 
+    const randomNumber: number = Math.floor(
+      1000000000 + Math.random() * 9000000000
+    );
+
     // store to supabse
     const storeData: MenuItemSupabase = {
       price: item.price,
@@ -27,6 +31,7 @@ const useMenu = () => {
       id: item.id,
       image: item.image,
       menuId: item.id,
+      productId: randomNumber,
     };
 
     //  transform
@@ -45,7 +50,7 @@ const useMenu = () => {
       const getItems: MenuItem[] = data.map((item) =>
         transformKeysToCamelCase(item)
       );
-      console.log("data :", data);
+
       setMenus([...menus, ...getItems]);
     }
   };

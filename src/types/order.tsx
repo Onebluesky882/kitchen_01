@@ -15,6 +15,8 @@ export type MenuItemSupabase = {
   image: string;
   category: string;
   updatedAt: string;
+  status?: string;
+  productId: number;
 };
 
 // local + supabase
@@ -31,15 +33,4 @@ export type OrderTable = {
   price: number;
   image: string;
   category: string;
-};
-
-//from supabase
-export type Order = {
-  id: string;
-  createdAt: string;
-  tableNo: string;
-  menuId: string;
-  status: string;
-  doneAt?: string;
-  amount: number;
 };

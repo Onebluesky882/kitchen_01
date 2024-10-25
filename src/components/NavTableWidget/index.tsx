@@ -2,21 +2,22 @@ import { Link } from "react-router-dom";
 import "./navTableWidget.css";
 import { useContext } from "react";
 import { GlobalContext } from "../../hook/GlobalContext";
+
 type NavbarProps = {
   tableNo: string;
   status: string;
-  seat?: number;
 };
 
 const NavTableWidget = () => {
-  const { tableNo: no } = useContext(GlobalContext).tableProvider;
+  const { table } = useContext(GlobalContext).orderProvider;
+
   return (
     <Container>
-      {no.map((table, index) => (
+      {table.map((table, index) => (
         <NavTableWidgetComponent
-          key={index}
           tableNo={table.tableNo}
           status={table.status}
+          key={index}
         />
       ))}{" "}
     </Container>
@@ -34,7 +35,7 @@ export const NavTableWidgetComponent = ({ tableNo, status }: NavbarProps) => {
         style={{ textDecoration: "none", color: "inherit" }}
         to={`/${tableNo}`}
       >
-        <div style={StatusTable(status)}>
+        <div style={statusTable(status)}>
           <h3>{tableNo}</h3>
         </div>
       </Link>
@@ -42,12 +43,12 @@ export const NavTableWidgetComponent = ({ tableNo, status }: NavbarProps) => {
   );
 };
 
-const StatusTable = (status: string): React.CSSProperties => {
-  const bgStatus = status === "AVAILABLE";
+const statusTable = (status: string): React.CSSProperties => {
+  const bgStatus = status === "ORDERED";
   return {
     padding: "10px 30px 10px 30px",
     margin: "0 20px 0 20px",
-    backgroundColor: bgStatus ? "#DDC291" : "gray",
+    backgroundColor: bgStatus ? "#FAE263" : "gray",
     borderRadius: "1000px",
     display: "flex",
     flexDirection: "column",

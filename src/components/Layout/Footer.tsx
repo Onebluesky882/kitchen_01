@@ -9,9 +9,11 @@ export const Footer = () => {
             <p>homepage</p>
           </div>
         </Link>
-        <div className="footer-column">
-          <p>menu</p>
-        </div>
+        <Link to={"/add-menu"}>
+          <div className="footer-column">
+            <p>Add Menu</p>
+          </div>
+        </Link>
         <div className="footer-column">
           <p>menu</p>
         </div>
