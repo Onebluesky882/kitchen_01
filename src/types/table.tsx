@@ -1,6 +1,6 @@
 export type Table = {
-  tableNo: string;
-  status: string;
+  tableNo: "A1" | "A2" | "A3" | "A4" | "A5" | "B1" | "B2" | "B3" | "B4";
+  status: "AVAILABLE" | "OCCUPIED" | "RESERVED" | "CLEANING";
   seat?: number;
 };
 

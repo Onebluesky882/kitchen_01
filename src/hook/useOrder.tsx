@@ -1,20 +1,44 @@
 import { useEffect, useState } from "react";
 import supabase from "../utils/supabase";
 import { transformKeysToCamelCase } from "../utils/string";
-import { MenuItemSupabase, OrderTable } from "../types/order";
+import { OrderTable } from "../types/order";
 import { Table } from "../types/table";
 import { getMenuItem, menu as id } from "../data/Menu";
 
+const defaultTable: Table = [
+  {
+    tableNo: "A1",
+    status: "AVAILABLE",
+  },
+];
+
 const useOrder = () => {
   const [order, setOrder] = useState<OrderTable[]>([]);
-  const [table, setTable] = useState<Table[]>([]);
+  const [table, setTable] = useState<Table>(defaultTable);
 
   useEffect(() => {
     getOrder();
   }, []);
 
-  const getOrder = async () => {
-    const { data } = await supabase.from("orders").select();
+  const changeTableStatus = async (status: string, tableNo: string) => {
+    await supabase.from("tables").update({ status }).eq("tableNo", tableNo);
+  };
+
+  const getTable = async () => {
+    const { data } = await supabase
+      .from("tables")
+      .select()
+      .eq("table_no", table.tableNo);
+    if (data) {
+      const tableNo = data.map((table) => transformKeysToCamelCase(table));
+    }
+  };
+
+  const getOrder = async (tableNo: string) => {
+    const { data } = await supabase
+      .from("orders")
+      .select()
+      .eq("table_no", tableNo);
 
     if (data) {
       const dataItem = data.map((item) => transformKeysToCamelCase(item));
@@ -43,29 +67,14 @@ const useOrder = () => {
       });
 
       setOrder([...order, ...newMenu]);
-      getTable(dataItem);
     }
+
+    return { order, setOrder, getOrder, table, getTable };
   };
-
-  const getTable = (dataItem: any[]) => {
-    const getTable: Table[] = dataItem.map((item) => ({
-      status: item.status,
-      tableNo: item.tableNo,
-    }));
-
-    //remove duplicate tableNO
-    const getTables = Array.from(
-      new Map(getTable.map((item) => [item.tableNo, item])).values()
-    );
-    setTable([...table, ...getTables]);
-  };
-
-  return { order, setOrder, getOrder, table };
 };
-
 export const defaultOrderProvider = {
   order: {} as OrderTable[],
-  table: {} as Table[],
+  table: defaultTable,
   setOrder: () => null,
   getOrder: () => Promise.resolve(),
   getOrderTable: () => Promise.resolve(),
