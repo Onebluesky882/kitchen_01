@@ -1,7 +1,4 @@
-import { useContext, useState } from "react";
-import { GlobalContext } from "../../hook/GlobalContext";
-import { MenuItem, MenuItemSupabase } from "../../types/order";
-import { getMenuItem } from "../../data/Menu";
+import { useState } from "react";
 
 type AddMenuProps = {
   id: string;
@@ -13,22 +10,15 @@ type AddMenuProps = {
 };
 
 const AddMenuItems = ({
-  id,
   name,
   price,
   image,
   category,
   index,
 }: AddMenuProps) => {
-  const { menus, addMenu } = useContext(GlobalContext).menuProvider;
   const [bgButton, setBgButton] = useState(false);
 
   const handleSubmit = () => {
-    const menuId: Pick<MenuItemSupabase, "id"> = {
-      id,
-    };
-    addMenu({ id });
-
     setBgButton(true);
   };
 

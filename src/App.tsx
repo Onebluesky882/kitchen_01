@@ -3,23 +3,20 @@ import Homepage from "./pages/Homepage";
 import Layout from "./components/Layout";
 import TableNo from "./pages/TableNo";
 import NavTableWidget from "./components/NavTableWidget";
-import GlobalProvider from "./hook/GlobalContext";
 import "./App.css";
 import AddMenuPage from "./pages/AddMenuPage";
 function App() {
   return (
-    <GlobalProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/" element={<NavTableWidget />} />
-            <Route path="/:tableNo" element={<TableNo />} />
-            <Route path="/add-menu" element={<AddMenuPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </GlobalProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<NavTableWidget />} />
+          <Route path="/:tableNo" element={<TableNo />} />
+          <Route path="/add-menu" element={<AddMenuPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 export default App;

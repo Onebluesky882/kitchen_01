@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import "./navTableWidget.css";
-import { useContext } from "react";
-import { GlobalContext } from "../../hook/GlobalContext";
 
 type NavbarProps = {
   tableNo: string;
@@ -9,19 +7,7 @@ type NavbarProps = {
 };
 
 const NavTableWidget = () => {
-  const { table } = useContext(GlobalContext).orderProvider;
-
-  return (
-    <Container>
-      {table.map((table, index) => (
-        <NavTableWidgetComponent
-          tableNo={table.tableNo}
-          status={table.status}
-          key={index}
-        />
-      ))}{" "}
-    </Container>
-  );
+  return <Container></Container>;
 };
 
 const Container = ({ children }: React.PropsWithChildren) => {

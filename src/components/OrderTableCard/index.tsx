@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import "./orderTableCard.css";
-import { GlobalContext } from "../../hook/GlobalContext";
 
 type OrderTableCardProps = {
   tableNo: string;
@@ -19,7 +17,6 @@ export const OrderTableCard = ({
   image,
   name,
   price,
-  tableNo,
 }: OrderTableCardProps) => {
   return (
     <div className="order-table-section">

@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import supabase from "../utils/supabase";
 import { TableContainer } from "../components/TableOrder";
 import "./style/homepage.css";
 import { colors } from "../data/Theme";
